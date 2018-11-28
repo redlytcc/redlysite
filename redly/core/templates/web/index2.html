@@ -1,0 +1,173 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block content %}
+
+    hello <a href="/final/">sair</a>asdasd<br><br>
+    <form action="" class="col s12" id="formulario" @submit.prevent="sendChat" enctype="multipart/form-data">
+        <div class="rowi">
+            <textarea placeholder="texto" v-model="chatData.text" cols="40" id="id_text" maxlength="6000" name="text" rows="10" style="resize: none;background:white;color:black"></textarea><br>
+            <input type="hidden" id="id_nome" maxlength="40" name="nome" value="{{us}}"><br>
+            <input id="id_img" name="img" type="file" ref="file" accept="image/*" @change="fileon($event)"/><br>
+            <button class="btn waves-effect waves-light" type="submit">
+                Enviar
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+    </form><br><br>
+    <div class="row" id="conv" @load='hel'>
+        {% for msm in allmsm %}
+            <div class="msm msm-{{msm.id}}">
+                <span @click="del({{msm.id}})" class="smsm" id=" msm-{{msm.id}}">>X<</span>
+                {% if msm.nome == us %}
+                    <div class="mymsm">
+                {% else %}
+                    <div class="another">
+                {% endif %}
+                    <h4>{{msm.nome}} &nbsp;&nbsp;&nbsp;<span class="h">{{msm.date}}</span> </h4>
+                </div>
+                {% if msm.img %}
+                    <img src="/media/{{msm.img}}" alt="" width='400' height='300'>
+                {% endif %}
+                {% if msm.text != 'null'  %}
+                <div class="textinho">
+                    <p>{{msm.text | linebreaksbr | escape | urlize}}</p>
+                </div>
+                {% endif %}
+            </div>
+            <br>
+        {% endfor %}
+
+    </div>
+{% endblock %}
+{% block script %}
+    <script type="text/javascript" src="/static/js/node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/urlize.js-master/urlize.js"></script>
+    <script type="text/javascript" src="/static/js/urlize.js-master/urlize_tlds.js"></script>
+    <script type="text/javascript">
+    Vue.http.headers.common['X-CSRFToken'] = "{{ csrf_token }}";
+    var app = new Vue({
+        el: '#app',
+        methods: {
+            goBack: function () {
+                var leftDiv=this.$refs.left.style.width;
+                var cl=document.querySelectorAll(".closeM");
+                if(leftDiv == "5%"){
+                    document.querySelector(".rigthDiv").style.width="80%";
+                    document.querySelector(".rigthDiv").style.marginLeft="20%";
+
+                    this.$refs.left.style.width="20%";
+
+                    cl[1].style.display="none";
+                    cl[0].style.display="block";
+                }
+                else{
+                    this.$refs.left.style.width="5%";
+                    document.querySelector(".rigthDiv").style.width="95%";
+                    document.querySelector(".rigthDiv").style.marginLeft="5%";
+
+                    cl[0].style.display="none";
+                    cl[1].style.display="block";
+
+                }
+                console.log(document.getElementById("app").style.width);
+            }
+        }
+    });
+
+    var contentApp = new Vue({
+        el: '#contentApp',
+        delimiters:['{$','$}'],
+
+        data:{
+
+            chatData:{'nome':'{{us}}','text':null},
+            id:{{Last}},
+            cr:{},
+            file: new FormData(),
+            file2: ''
+        },
+        mounted:function(){
+            this.hel();
+            console.log(this.id);
+        },
+        methods: {
+            fileon:function(event){
+                this.file2=event.target.files[0];
+                this.file.append("img",event.target.files[0]);
+                console.log(this.file);
+            },
+            hel:function() {
+                this.$http.get('/apirest/getposts/'+this.id+'/')
+                .then((rest)=>{
+                    // console.log(rest);
+                    this.cr=rest.body.u;
+                    for (i in this.cr){
+                        x=new Date(this.cr[i][4])
+                        this.id=this.cr[i][0];
+                        codigo  = '<div class="msm msm-'+this.cr[i][0]+'">';
+                        codigo += '<span class="smsm" id="msm-'+this.cr[i][0]+'">>X<</span>';
+
+                        if (this.cr[i][1] == '{{us}}') {
+                            codigo+='<div class="mymsm">';
+                        }
+                        else{
+                            codigo+='<div class="another">';
+                        }
+                        codigo +=       '<h4>'+ this.cr[i][1] +'&nbsp;&nbsp;&nbsp;'+x.toDateString()+'</h4>'  	+
+                                    '</div>';
+                        if (this.cr[i][2]) {
+                            codigo+="<img src='"+this.cr[i][2]+"' alt='' width='400' height='300'>";
+                        }
+                        if (this.cr[i][3] != 'null' && this.cr[i][3] != null) {
+                            console.log(this.cr[i][3]);
+                            codigo +=   '<div class="textinho">'	   +
+                                    '<p><pre>'+ urlize(this.cr[i][3],nofollow=true) +'</pre></p>'     +
+                                '</div>'							   +
+                            '</div><br>';
+                        }
+                        $('#conv').prepend(codigo);
+                    }
+
+                })
+                .catch((err)=>{
+                    console.log('nothing');
+                    console.log(err);
+
+                });
+                setTimeout(this.hel,1000);
+            },
+            sendChat:function() {
+                this.file.append("nome",this.chatData.nome);
+                this.file.append("text",this.chatData.text);
+
+                this.$http.post('/apirest/postposts/',this.file)
+                    .then((rest)=>{
+                        // console.log(rest);
+                        $('#formulario')[0].reset();
+                        this.chatData={'nome':'{{us}}','text':null};
+                        this.file=new FormData();
+                        console.log(this.file);
+                    })
+                    .catch((err)=>{
+                        // console.log(err);
+                        this.chatData={'nome':'{{us}}','text':null};
+
+                        this.file=new FormData();
+                        console.log(this.file);
+                    })
+            },
+            del:function(id) {
+
+                this.$http.get('/redly/redid/'+id)
+                    .then((rest)=>{
+                        $(".msm-"+id).hide();
+                    })
+                    .catch((err)=>{
+                        console.log(err);
+                    })
+            }
+        }
+    });
+
+    </script>
+{% endblock %}

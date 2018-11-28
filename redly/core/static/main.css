@@ -1,0 +1,363 @@
+@font-face {
+  src: url("sf/SanFranciscoText-Regular.otf");
+  font-family: 'sf'; }
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'sf'; }
+
+html, body {
+  width: 100%;
+  height: 100%; }
+
+body {
+  background-color: #f5f6fa; }
+
+div.leftDiv {
+  height: 100%;
+  width: 20%;
+  background: #1c1c26;
+  position: fixed;
+  transition: 0.5s; }
+  div.leftDiv div.closeM {
+    transition: 1s; }
+    div.leftDiv div.closeM a {
+      text-align: center;
+      font-size: 1.4em;
+      color: white;
+      text-decoration: none;
+      display: block;
+      line-height: 4rem;
+      transition: 0.5s; }
+      div.leftDiv div.closeM a:hover {
+        background: #34353f; }
+    div.leftDiv div.closeM i {
+      color: #fff;
+      text-align: center;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 100%;
+      padding: 2%;
+      transform: translate(-50%, -50%);
+      left: 15%;
+      position: relative;
+      transition: 0.3s; }
+      div.leftDiv div.closeM i::before {
+        line-height: 2rem; }
+      div.leftDiv div.closeM i:hover {
+        background: #34353f; }
+    div.leftDiv div.closeM:nth-child(2) {
+      display: none; }
+      div.leftDiv div.closeM:nth-child(2) a {
+        line-height: 4rem;
+        text-align: left; }
+      div.leftDiv div.closeM:nth-child(2) i {
+        left: 50%;
+        transform: translate(0%, 0%); }
+        div.leftDiv div.closeM:nth-child(2) i:hover {
+          background: none; }
+        div.leftDiv div.closeM:nth-child(2) i:nth-child(1) {
+          transform: translate(-50%, 0%);
+          margin-top: 10%; }
+          div.leftDiv div.closeM:nth-child(2) i:nth-child(1):hover {
+            background: #34353f; }
+  div.leftDiv img {
+    margin-top: 10%;
+    margin-left: 32.5%;
+    width: 35%; }
+
+div.rigthDiv {
+  width: 80%;
+  margin-left: 20%;
+  height: 100%;
+  transition: 0.5s; }
+  div.rigthDiv article.home {
+    width: 100%;
+    background-position: center;
+    background-size: cover; }
+    div.rigthDiv article.home p {
+      padding-top: 3%;
+      color: black;
+      text-align: justify;
+      font-size: 1.2em;
+      text-indent: 1.5em;
+      width: 40%;
+      margin-left: 5%; }
+      div.rigthDiv article.home p:nth-child(1) {
+        text-align: center;
+        text-indent: 0;
+        padding-top: 10%;
+        font-size: 1.6em !important; }
+  div.rigthDiv #conv {
+    width: 55%;
+    margin-left: 22.5%; }
+    div.rigthDiv #conv .msm {
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid black; }
+      div.rigthDiv #conv .msm span.smsm {
+        float: right; }
+      div.rigthDiv #conv .msm img {
+        width: 100%; }
+
+form.logNcad {
+  padding: 5%;
+  margin-left: 32.5%;
+  width: 35%;
+  padding-top: 3%;
+  display: block;
+  margin-top: 2em;
+  border: none;
+  border-radius: 10px;
+  background-color: white;
+  box-sizing: border-box;
+  box-shadow: 10px 13px 40px rgba(184, 184, 184, 0.5);
+  transition: 0.2s ease-in-out; }
+  form.logNcad:hover {
+    box-shadow: 10px 13px 40px rgba(184, 184, 184, 0.72); }
+  form.logNcad h1 {
+    font-size: 1.3em;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.4em; }
+  form.logNcad img {
+    display: block;
+    left: 50%;
+    margin: auto;
+    width: 5em;
+    height: 5em;
+    margin-bottom: 2%; }
+  form.logNcad div.a {
+    position: relative;
+    margin-bottom: 45px; }
+    form.logNcad div.a label {
+      font-size: 0.9em;
+      font-weight: normal;
+      position: absolute;
+      pointer-events: none;
+      left: 5%;
+      top: -20px;
+      transition: 0.4s ease all;
+      color: #c81530; }
+    form.logNcad div.a input {
+      background: none;
+      font-size: 1.25em;
+      box-sizing: border-box;
+      outline: none;
+      outline-color: transparent;
+      -webkit-outline: none;
+      -moz-outline: none;
+      padding: 10px 10px 10px 5px;
+      display: block;
+      width: 90%;
+      margin-left: 5%;
+      border: none;
+      border-bottom: 1px solid #757575; }
+      form.logNcad div.a input:required {
+        box-shadow: none; }
+      form.logNcad div.a input:placeholder-shown ~ label {
+        color: #999;
+        font-size: 1.2em;
+        top: 15px; }
+      form.logNcad div.a input:focus ~ label {
+        font-size: 0.9em;
+        top: -20px;
+        color: #c81530; }
+    form.logNcad div.a .bar {
+      position: relative;
+      display: block;
+      width: 90%;
+      margin-left: 5%; }
+    form.logNcad div.a:nth-child(6) {
+      width: 45%;
+      float: left;
+      margin-left: 2.5%; }
+    form.logNcad div.a:nth-child(7) {
+      width: 50%;
+      float: left;
+      margin-left: 0%; }
+      form.logNcad div.a:nth-child(7).bar {
+        width: 120%; }
+  form.logNcad button {
+    height: 50px;
+    color: white;
+    font-size: 125%;
+    border-radius: 5px;
+    border: none;
+    margin-top: 2.3rem;
+    margin-left: 20%;
+    width: 60%;
+    background-color: #dd031d;
+    transition: 0.3s; }
+    form.logNcad button:hover {
+      background-color: #b30726; }
+  form.logNcad p {
+    width: 100%;
+    text-align: center; }
+    form.logNcad p a {
+      color: #221477;
+      text-decoration: none;
+      font-size: 1.1em;
+      transition: 0.2s ease-in-out; }
+      form.logNcad p a:hover {
+        text-decoration: underline;
+        color: #c70539; }
+
+.bar {
+  width: 100%; }
+  .bar:before, .bar:after {
+    content: '';
+    height: 3px;
+    width: 0;
+    bottom: 0px;
+    position: absolute;
+    background: #c81530;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.4s ease all; }
+  .bar:before {
+    left: 50%; }
+  .bar:after {
+    right: 50%; }
+
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width: 50%; }
+
+.highlight {
+  position: absolute;
+  height: 60%;
+  width: 100px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5; }
+
+@media only screen and (max-width: 480px) {
+  article.home p {
+    margin-left: 5% !important;
+    width: 90% !important;
+    margin-top: 0 !important;
+    font-size: 1em !important; }
+
+  div.leftDiv {
+    display: none !important; }
+
+  div.rigthDiv {
+    width: 100% !important;
+    margin-left: 0 !important; }
+
+  form.logNcad {
+    margin-left: 1%;
+    width: 98%;
+    padding-top: 40px; }
+    form.logNcad div.a:nth-child(6) {
+      width: 100%;
+      float: none;
+      margin-left: 0%; }
+    form.logNcad div.a:nth-child(7) {
+      width: 100%;
+      float: none;
+      margin-left: 0%; }
+      form.logNcad div.a:nth-child(7) input {
+        width: 90%; }
+    form.logNcad button {
+      margin-left: 5%;
+      width: 90%; } }
+@media only screen and (max-width: 520px) and (min-width: 481px) {
+  article.home p {
+    margin-left: 5% !important;
+    width: 60% !important;
+    margin-top: 0 !important;
+    font-size: 1em !important; }
+
+  form.logNcad {
+    margin-left: 5%;
+    width: 90%;
+    padding-top: 40px; }
+    form.logNcad div.a:nth-child(6) {
+      width: 100%;
+      float: none;
+      margin-left: 0%; }
+    form.logNcad div.a:nth-child(7) {
+      width: 100%;
+      float: none;
+      margin-left: 0%; }
+      form.logNcad div.a:nth-child(7) input {
+        width: 90%; }
+    form.logNcad button {
+      margin-left: 12.5%;
+      width: 75%; }
+
+  div.leftDiv {
+    display: none !important; }
+
+  div.rigthDiv {
+    width: 100% !important;
+    margin-left: 0 !important; } }
+@media only screen and (max-width: 678px) and (min-width: 521px) {
+  article.home p {
+    margin-left: 4% !important;
+    width: 50% !important;
+    margin-top: 0 !important;
+    font-size: 1.03em !important; }
+
+  form.logNcad {
+    margin-left: 12.5%;
+    width: 75%;
+    padding-top: 40px; }
+    form.logNcad div.a:nth-child(6) {
+      width: 100%;
+      float: none;
+      margin-left: 0%; }
+    form.logNcad div.a:nth-child(7) {
+      width: 100%;
+      float: none;
+      margin-left: 0%; }
+      form.logNcad div.a:nth-child(7) input {
+        width: 90%; }
+
+  div.leftDiv {
+    display: none !important; }
+
+  div.rigthDiv {
+    width: 100% !important;
+    margin-left: 0 !important; } }
+@media only screen and (max-width: 768px) and (min-width: 679px) {
+  article.home p {
+    width: 50% !important;
+    margin-top: 0 !important;
+    font-size: 1em !important; }
+
+  div.leftDiv {
+    display: none !important; }
+
+  div.rigthDiv {
+    width: 100% !important;
+    margin-left: 0 !important; }
+
+  form.logNcad {
+    margin-left: 16%;
+    width: 68%;
+    padding-top: 53px; }
+    form.logNcad div.a:nth-child(6) {
+      width: 100%;
+      float: none;
+      margin-left: 0%; }
+    form.logNcad div.a:nth-child(7) {
+      width: 100%;
+      float: none;
+      margin-left: 0%; }
+      form.logNcad div.a:nth-child(7) input {
+        width: 90%; } }
+@media only screen and (max-width: 1024px) and (min-width: 769px) {
+  article.home p {
+    width: 45% !important;
+    margin-top: 0 !important;
+    font-size: 1em !important; }
+
+  form.logNcad {
+    margin-left: 20%;
+    width: 60%;
+    padding-top: 59px; } }
+
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,23 @@
+@font-face {
+    src: url('sf/SanFranciscoText-Regular.otf');
+    font-family: 'sf';
+}
+* {
+	margin: 0px;
+	padding: 0px;
+	font-family: 'st', sans-serif !important;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+
+body {
+	background-color: rgb(251, 250, 250);
+}

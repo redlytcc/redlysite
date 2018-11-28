@@ -1,0 +1,3 @@
+python manage.py livereload | python manage.py runserver
+
+sudo sass --watch main.scss:main.css
