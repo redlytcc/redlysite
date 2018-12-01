@@ -8,7 +8,7 @@ import json
 
 @login_required
 def redhome(request):
-    allmsm=Chat.objects.order_by('-id').filter(visible=1)[:10]
+    allmsm=Chat.objects.order_by('-id').filter(visible=1)[:30]
     Last=Chat.objects.values_list('id').order_by('-id')[:1]
     l=int()
     for i in Last:

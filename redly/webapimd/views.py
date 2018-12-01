@@ -53,9 +53,12 @@ def cad(request):
 
 
 @csrf_exempt
-def gtPost(request,lsd=0):
+def gtPost(request,lsd=-1):
     resposta=[]
-    a=Chat.objects.filter(visible=1).filter(id__gt=lsd)
+    if lsd == -1:
+        a=Chat.objects.order_by('-id').filter(visible=1)[:30]
+    else:
+        a=Chat.objects.filter(visible=1).filter(id__gt=lsd)
     for i in a:
         x=[]
         x.append(i.id)
