@@ -77,3 +77,6 @@ def homeinit(request):
     if 'usuario' in request.session:
         return redirect('/redly/')
     return render(request,"web/home.html")
+
+def offline(request):
+    return render(request,'web/off.html')

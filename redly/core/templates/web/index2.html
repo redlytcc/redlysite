@@ -17,8 +17,8 @@
     <div class="row" id="conv" @load='hel'>
         {% for msm in allmsm %}
             <div class="msm msm-{{msm.id}}">
-                <span @click="del({{msm.id}})" class="smsm" id=" msm-{{msm.id}}">>X<</span>
                 {% if msm.nome == us %}
+                    <span @click="del({{msm.id}})" class="smsm" id=" msm-{{msm.id}}">>X<</span>
                     <div class="mymsm">
                 {% else %}
                     <div class="another">
@@ -26,7 +26,7 @@
                     <h4>{{msm.nome}} &nbsp;&nbsp;&nbsp;<span class="h">{{msm.date}}</span> </h4>
                 </div>
                 {% if msm.img %}
-                    <img src="/media/{{msm.img}}" alt="" width='400' height='300'>
+                    <img src="/media/{{msm.img}}" alt="imagem do usuario" title="imagem de redly" width='400' height='300'>
                 {% endif %}
                 {% if msm.text != 'null'  %}
                 <div class="textinho">
@@ -105,9 +105,9 @@
                         x=new Date(this.cr[i][4])
                         this.id=this.cr[i][0];
                         codigo  = '<div class="msm msm-'+this.cr[i][0]+'">';
-                        codigo += '<span class="smsm" id="msm-'+this.cr[i][0]+'">>X<</span>';
 
                         if (this.cr[i][1] == '{{us}}') {
+                            codigo += '<span class="smsm" onclick="contentApp.del('+this.cr[i][0]+')" id="msm-'+this.cr[i][0]+'">>X<</span>';
                             codigo+='<div class="mymsm">';
                         }
                         else{
@@ -116,7 +116,7 @@
                         codigo +=       '<h4>'+ this.cr[i][1] +'&nbsp;&nbsp;&nbsp;'+x.toDateString()+'</h4>'  	+
                                     '</div>';
                         if (this.cr[i][2]) {
-                            codigo+="<img src='"+this.cr[i][2]+"' alt='' width='400' height='300'>";
+                            codigo+="<img src='"+this.cr[i][2]+"' alt='imagem do usuario' title='imagem de redly' width='400' height='300'>";
                         }
                         if (this.cr[i][3] != 'null' && this.cr[i][3] != null) {
                             console.log(this.cr[i][3]);

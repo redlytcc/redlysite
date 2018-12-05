@@ -3,8 +3,9 @@ import re
 from django.core import validators
 from django.contrib.auth.models import (AbstractBaseUser,PermissionsMixin,UserManager)
 from django.contrib.auth.models import AbstractUser
+from django.urls import reverse
 
-class User(AbstractBaseUser):
+class User(AbstractBaseUser,PermissionsMixin):
     username=models.CharField('Apelido',max_length=40,unique=True,validators=[validators.RegexValidator(re.compile('^[\w.@+-]+$'),'o nome do usuario so pode conter letras digitos ou os''seguintes caraters:@/./+/-/_','invalid')])
     email=models.EmailField('E-mail',unique=True)
     name=models.CharField('Nome',max_length=40)

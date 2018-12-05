@@ -39,17 +39,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
     'core',
-    # 'channels',
     'rest_framework',
-    # 'rest_framework.authtoken',
-    # 'rest_auth',
     'djangobower',
     'redweb',
     'compressor',
-    'livereload',
     'pwa',
     'webapimd',
+    'livereload',
+    # 'rest_auth',
+    # 'rest_framework.authtoken',
+    # 'channels',
 ]
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -163,13 +164,9 @@ STATICFILES_FINDERS = (
 # )
 
 AUTH_USER_MODEL = 'core.User'
-
 LOGIN_URL='/login'
-
 LOGIN_REDIRECT_URL='/redly/'
-
 LOGOUT_REDIRECT_URL='/redly/'
-
 CORS_ORIGIN_ALLOW_ALL = True
 
 #CORS_ORIGIN_WHITELIST = (
