@@ -1,6 +1,17 @@
 var staticCacheName = 'Redly-v8';
 
 self.addEventListener('install', function(event) {
+    function cleanResponse(response) {
+        const clonedResponse = response.clone();
+        const bodyPromise = 'body' in clonedResponse ? Promise.resolve(clonedResponse.body) : clonedResponse.blob();
+        return bodyPromise.then((body) => {
+            return new Response(body, {
+                headers: clonedResponse.headers,
+                status: clonedResponse.status,
+                statusText: clonedResponse.statusText,
+            });
+        });
+    }
   event.waitUntil(
     caches.open(staticCacheName).then(function(cache) {
       return cache.addAll([
@@ -8,6 +19,10 @@ self.addEventListener('install', function(event) {
         '/static/js/materialize.min.js',
         '/static/js/jquery-3.1.1.min.js',
         '/off/',
+<<<<<<< HEAD
+=======
+        '/',
+>>>>>>> 85fec05a9e022364a1a29168bdd08dca2f795b2c
         '/static/imagem/icons/256.png',
         '/static/imagem/icons/logo1024.png',
         '/static/sf/SanFranciscoText-Regular.otf',
@@ -23,6 +38,16 @@ self.addEventListener('install', function(event) {
 
 
 self.addEventListener('fetch', function(event) {
+<<<<<<< HEAD
+=======
+  var requestUrl = new URL(event.request.url);
+    if (requestUrl.origin === location.origin) {
+      if ((requestUrl.pathname === '/off/')) {
+        event.respondWith(caches.match('/'));
+        return;
+      }
+    }
+>>>>>>> 85fec05a9e022364a1a29168bdd08dca2f795b2c
     event.respondWith(
       caches.match(event.request).then(function(response) {
         return response || fetch(event.request);
@@ -31,6 +56,7 @@ self.addEventListener('fetch', function(event) {
         return caches.match('/off/');
       })
     );
+  /*5252852*/
 });
 
 function cleanResponse(response) {
