@@ -49,6 +49,42 @@
     }
 }
 
+@mixin ThemeM($cm,$cl,$hcl,$bc){
+    background: $cm;
+    div.closeM{
+        a{
+            color: $cl;
+            &:hover{
+                background:$bc;
+                color:$hcl;
+            }
+            &:hover i{
+                color: $hcl;
+            }
+        }
+        i{
+            color: $cl;
+            &:hover{
+                background:$bc;
+                color: $hcl;
+            }
+        }
+        &:nth-child(2){
+            i{
+                &:hover{
+                    background: none;
+                }
+                &:nth-child(1), &:nth-child(4){
+                    &:hover{
+                        background:$bc;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
 *{
     margin: 0;
     padding: 0;
@@ -60,84 +96,148 @@ html,body{
 }
 body{
     // background-image: url(./imagem/backlog.png);
-    background-color: #f5f6fa;
+    background-color: #fff;
 }
+a{
+    outline: none;
+}
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    &:target {
+        display: table;
+        position: absolute;
+    }
+    .modal-dialog {
+        display: table-cell;
+        vertical-align: middle;
+        .mcc {
+            margin: auto;
+            background-color: #f3f3f3;
+            position: relative;
+            padding: 0;
+            outline: 0;
+            border: 1px #777 solid;
+            text-align: justify;
+            width: 80%;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -webkit-animation-name: dsModel;
+            -webkit-animation-duration: 0.5s;
+            animation-name: dsModel;
+            animation-duration: 0.5s;
+            div.hh{
+                padding-top: 50px;
 
+                padding-bottom: 50px;
+
+            }
+            .hh {
+              padding: 2px 16px;
+            }
+            header.xh {
+                background-color: #9c1126;
+                font-size: 25px;
+                color: white;
+                .xbt {
+                    text-decoration: none;
+                    float: right;
+                    font-size: 35px;
+                    font-weight: bold;
+                    color: #fff;
+                    &:hover,&:focus{
+                        color: #000;
+                        text-decoration: none;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
 div.leftDiv{
     height: 100%;
-    width:20%;
-    background: #1c1c26;
+    width:15%;
+    &.l{
+        @include ThemeM(rgb(232, 234, 249),black,white,rgb(13, 12, 32));
+    }
+    &.d{
+        @include ThemeM(rgb(23, 22, 22),white,black,rgb(223, 215, 238));
+    }
     position: fixed;
     transition:0.5s;
     div.closeM{
         a{
             text-align: center;
             font-size: 1.4em;
-            color:white;
             text-decoration: none;
             display: block;
             line-height: 4rem;
             transition: 0.5s;
-            &:hover{
-                background:#34353f;
-            }
         }
         i{
-            color: #fff;
+            cursor: pointer;
+            color: black;
+            float: right;
             &::before{
                 line-height: 2rem;
             }
-            &:hover{
-                background:#34353f;
+            &:nth-child(4){
             }
             text-align: center;
             width: 2rem;
             height: 2rem;
             border-radius: 100%;
             padding: 2%;
-            transform: translate(-50%,-50%);
-            left: 15%;
-            position: relative;
             transition: 0.3s;
-
         }
         transition: 1s;
         &:nth-child(2){
+            display: none;
             a{
                 line-height: 4rem;
                 text-align: left;
             }
-            display: none;
             i{
+                &#back{
+                    margin-top: -1%;
+                    line-height: 4rem;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 0;
+                }
+                float: none;
+                position: relative;
                 left: 50%;
                 transform: translate(0%,0%);
-                &:hover{
-                    background: none;
-                }
-                &:nth-child(1){
+                &:nth-child(1), &:nth-child(4){
                     transform: translate(-50%,0%);
-
-                    &:hover{
-                        background:#34353f;
-                    }
                     margin-top: 10%;
                 }
             }
         }
+        img{
+            margin-top: 10%;
+            margin-left: 35%;
+            width: 30%;
+        }
     }
-    img{
-        margin-top: 10%;
-        margin-left: 32.5%;
-        width: 35%;
-    }
-
-
 }
 div.rigthDiv{
-    width: 80%;
-    margin-left: 20%;
-    height: 100%;
     transition: 0.5s;
+    height: 100%;
+    width: 100%;
+    margin-left: 0%;
+    &.lm{
+        width: 85%;
+        margin-left: 15%;
+    }
     article.home{
         width: 100%;
         // background-image: url(imagem/icons/10.jpg);
@@ -178,7 +278,38 @@ div.rigthDiv{
     }
 
 }
+div.topDiv{
+    &.l{
+        @include ThemeM(rgb(232, 234, 249),black,white,rgb(13, 12, 32));
+    }
+    &.d{
+        @include ThemeM(rgb(23, 22, 22),white,black,rgb(223, 215, 238));
+    }
+    display: none;
+    width: 100%;
+    height: 6rem;
+    div.closeM{
+        line-height: 6rem;
+        img{
+            width: 5rem;
+            margin-top: 0.5rem;
+            margin-left: 1.5rem;
+        }
 
+        a{
+            font-size: 1.4em;
+            text-align: center;
+            transition: 0.5s;
+            text-decoration: none;
+            &:nth-child(1){
+                width: 4rem;
+            }
+            line-height: 6rem;
+            width: 7rem;
+            float: right;
+        }
+    }
+}
 form.logNcad{
     padding: 5%;
     @include formT(3%,35%,32.5%);
@@ -404,4 +535,16 @@ input:focus ~ .bar:before, input:focus ~ .bar:after {
     form.logNcad{
         @include formT(59px,60%,20%);
     }
+}
+
+
+@-webkit-keyframes dsModel {
+    from {top:-100px;opacity: 0;}
+    to {top:0px;opacity:1;}
+}
+
+
+@keyframes dsModel {
+    from {top:-100px;opacity: 0;}
+    to {top:0px;opacity:1;}
 }

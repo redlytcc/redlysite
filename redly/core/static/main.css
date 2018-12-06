@@ -11,66 +11,155 @@ html, body {
   height: 100%; }
 
 body {
-  background-color: #f5f6fa; }
+  background-color: #fff; }
+
+a {
+  outline: none; }
+
+.modal {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.4); }
+  .modal:target {
+    display: table;
+    position: absolute; }
+  .modal .modal-dialog {
+    display: table-cell;
+    vertical-align: middle; }
+    .modal .modal-dialog .mcc {
+      margin: auto;
+      background-color: #f3f3f3;
+      position: relative;
+      padding: 0;
+      outline: 0;
+      border: 1px #777 solid;
+      text-align: justify;
+      width: 80%;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      -webkit-animation-name: dsModel;
+      -webkit-animation-duration: 0.5s;
+      animation-name: dsModel;
+      animation-duration: 0.5s; }
+      .modal .modal-dialog .mcc div.hh {
+        padding-top: 50px;
+        padding-bottom: 50px; }
+      .modal .modal-dialog .mcc .hh {
+        padding: 2px 16px; }
+      .modal .modal-dialog .mcc header.xh {
+        background-color: #9c1126;
+        font-size: 25px;
+        color: white; }
+        .modal .modal-dialog .mcc header.xh .xbt {
+          text-decoration: none;
+          float: right;
+          font-size: 35px;
+          font-weight: bold;
+          color: #fff; }
+          .modal .modal-dialog .mcc header.xh .xbt:hover, .modal .modal-dialog .mcc header.xh .xbt:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer; }
 
 div.leftDiv {
   height: 100%;
-  width: 20%;
-  background: #1c1c26;
+  width: 15%;
   position: fixed;
   transition: 0.5s; }
+  div.leftDiv.l {
+    background: #e8eaf9; }
+    div.leftDiv.l div.closeM a {
+      color: black; }
+      div.leftDiv.l div.closeM a:hover {
+        background: #0d0c20;
+        color: white; }
+      div.leftDiv.l div.closeM a:hover i {
+        color: white; }
+    div.leftDiv.l div.closeM i {
+      color: black; }
+      div.leftDiv.l div.closeM i:hover {
+        background: #0d0c20;
+        color: white; }
+    div.leftDiv.l div.closeM:nth-child(2) i:hover {
+      background: none; }
+    div.leftDiv.l div.closeM:nth-child(2) i:nth-child(1):hover, div.leftDiv.l div.closeM:nth-child(2) i:nth-child(4):hover {
+      background: #0d0c20; }
+  div.leftDiv.d {
+    background: #171616; }
+    div.leftDiv.d div.closeM a {
+      color: white; }
+      div.leftDiv.d div.closeM a:hover {
+        background: #dfd7ee;
+        color: black; }
+      div.leftDiv.d div.closeM a:hover i {
+        color: black; }
+    div.leftDiv.d div.closeM i {
+      color: white; }
+      div.leftDiv.d div.closeM i:hover {
+        background: #dfd7ee;
+        color: black; }
+    div.leftDiv.d div.closeM:nth-child(2) i:hover {
+      background: none; }
+    div.leftDiv.d div.closeM:nth-child(2) i:nth-child(1):hover, div.leftDiv.d div.closeM:nth-child(2) i:nth-child(4):hover {
+      background: #dfd7ee; }
   div.leftDiv div.closeM {
     transition: 1s; }
     div.leftDiv div.closeM a {
       text-align: center;
       font-size: 1.4em;
-      color: white;
       text-decoration: none;
       display: block;
       line-height: 4rem;
       transition: 0.5s; }
-      div.leftDiv div.closeM a:hover {
-        background: #34353f; }
     div.leftDiv div.closeM i {
-      color: #fff;
+      cursor: pointer;
+      color: black;
+      float: right;
       text-align: center;
       width: 2rem;
       height: 2rem;
       border-radius: 100%;
       padding: 2%;
-      transform: translate(-50%, -50%);
-      left: 15%;
-      position: relative;
       transition: 0.3s; }
       div.leftDiv div.closeM i::before {
         line-height: 2rem; }
-      div.leftDiv div.closeM i:hover {
-        background: #34353f; }
     div.leftDiv div.closeM:nth-child(2) {
       display: none; }
       div.leftDiv div.closeM:nth-child(2) a {
         line-height: 4rem;
         text-align: left; }
       div.leftDiv div.closeM:nth-child(2) i {
+        float: none;
+        position: relative;
         left: 50%;
         transform: translate(0%, 0%); }
-        div.leftDiv div.closeM:nth-child(2) i:hover {
-          background: none; }
-        div.leftDiv div.closeM:nth-child(2) i:nth-child(1) {
+        div.leftDiv div.closeM:nth-child(2) i#back {
+          margin-top: -1%;
+          line-height: 4rem;
+          width: 100%;
+          height: 100%;
+          border-radius: 0; }
+        div.leftDiv div.closeM:nth-child(2) i:nth-child(1), div.leftDiv div.closeM:nth-child(2) i:nth-child(4) {
           transform: translate(-50%, 0%);
           margin-top: 10%; }
-          div.leftDiv div.closeM:nth-child(2) i:nth-child(1):hover {
-            background: #34353f; }
-  div.leftDiv img {
-    margin-top: 10%;
-    margin-left: 32.5%;
-    width: 35%; }
+    div.leftDiv div.closeM img {
+      margin-top: 10%;
+      margin-left: 35%;
+      width: 30%; }
 
 div.rigthDiv {
-  width: 80%;
-  margin-left: 20%;
+  transition: 0.5s;
   height: 100%;
-  transition: 0.5s; }
+  width: 100%;
+  margin-left: 0%; }
+  div.rigthDiv.lm {
+    width: 85%;
+    margin-left: 15%; }
   div.rigthDiv article.home {
     width: 100%;
     background-position: center;
@@ -99,6 +188,63 @@ div.rigthDiv {
         float: right; }
       div.rigthDiv #conv .msm img {
         width: 100%; }
+
+div.topDiv {
+  display: none;
+  width: 100%;
+  height: 6rem; }
+  div.topDiv.l {
+    background: #e8eaf9; }
+    div.topDiv.l div.closeM a {
+      color: black; }
+      div.topDiv.l div.closeM a:hover {
+        background: #0d0c20;
+        color: white; }
+      div.topDiv.l div.closeM a:hover i {
+        color: white; }
+    div.topDiv.l div.closeM i {
+      color: black; }
+      div.topDiv.l div.closeM i:hover {
+        background: #0d0c20;
+        color: white; }
+    div.topDiv.l div.closeM:nth-child(2) i:hover {
+      background: none; }
+    div.topDiv.l div.closeM:nth-child(2) i:nth-child(1):hover, div.topDiv.l div.closeM:nth-child(2) i:nth-child(4):hover {
+      background: #0d0c20; }
+  div.topDiv.d {
+    background: #171616; }
+    div.topDiv.d div.closeM a {
+      color: white; }
+      div.topDiv.d div.closeM a:hover {
+        background: #dfd7ee;
+        color: black; }
+      div.topDiv.d div.closeM a:hover i {
+        color: black; }
+    div.topDiv.d div.closeM i {
+      color: white; }
+      div.topDiv.d div.closeM i:hover {
+        background: #dfd7ee;
+        color: black; }
+    div.topDiv.d div.closeM:nth-child(2) i:hover {
+      background: none; }
+    div.topDiv.d div.closeM:nth-child(2) i:nth-child(1):hover, div.topDiv.d div.closeM:nth-child(2) i:nth-child(4):hover {
+      background: #dfd7ee; }
+  div.topDiv div.closeM {
+    line-height: 6rem; }
+    div.topDiv div.closeM img {
+      width: 5rem;
+      margin-top: 0.5rem;
+      margin-left: 1.5rem; }
+    div.topDiv div.closeM a {
+      font-size: 1.4em;
+      text-align: center;
+      transition: 0.5s;
+      text-decoration: none;
+      line-height: 6rem;
+      width: 7rem;
+      float: right; }
+      div.topDiv div.closeM a:nth-child(1) {
+        width: 4rem; }
 
 form.logNcad {
   padding: 5%;
@@ -359,5 +505,19 @@ input:focus ~ .bar:before, input:focus ~ .bar:after {
     margin-left: 20%;
     width: 60%;
     padding-top: 59px; } }
+@-webkit-keyframes dsModel {
+  from {
+    top: -100px;
+    opacity: 0; }
+  to {
+    top: 0px;
+    opacity: 1; } }
+@keyframes dsModel {
+  from {
+    top: -100px;
+    opacity: 0; }
+  to {
+    top: 0px;
+    opacity: 1; } }
 
 /*# sourceMappingURL=main.css.map */

@@ -19,10 +19,6 @@ self.addEventListener('install', function(event) {
         '/static/js/materialize.min.js',
         '/static/js/jquery-3.1.1.min.js',
         '/off/',
-<<<<<<< HEAD
-=======
-        '/',
->>>>>>> 85fec05a9e022364a1a29168bdd08dca2f795b2c
         '/static/imagem/icons/256.png',
         '/static/imagem/icons/logo1024.png',
         '/static/sf/SanFranciscoText-Regular.otf',
@@ -38,16 +34,13 @@ self.addEventListener('install', function(event) {
 
 
 self.addEventListener('fetch', function(event) {
-<<<<<<< HEAD
-=======
-  var requestUrl = new URL(event.request.url);
+    var requestUrl = new URL(event.request.url);
     if (requestUrl.origin === location.origin) {
-      if ((requestUrl.pathname === '/off/')) {
-        event.respondWith(caches.match('/'));
+      if ((requestUrl.pathname === '/')) {
+        event.respondWith(caches.match('/off'));
         return;
       }
     }
->>>>>>> 85fec05a9e022364a1a29168bdd08dca2f795b2c
     event.respondWith(
       caches.match(event.request).then(function(response) {
         return response || fetch(event.request);

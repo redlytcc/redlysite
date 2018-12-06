@@ -1,15 +1,14 @@
 {% load compress %}
 {% load staticfiles %}
-
-
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="pt-br" dir="ltr">
     {% load pwa %}
     {% load static %}
     <head>
         {% progressive_web_app_meta %}
         <meta charset="utf-8">
         <meta Name="robots" content="follow">
+        <link rel="alternate" type="application/rss+xml" title="Redly - Rede social acadêmica e empresarial" href="https://redly.pythonanywhere.com/sitemap.xml" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta http-equiv="Content-Language" content="pt-br">
         <meta name="author" content="Redly">
@@ -35,68 +34,85 @@
         <link rel="stylesheet" type="text/css" href="/static/main.css">
     </head>
     <body>
-        <div class="leftDiv" id="app" ref="left">
-            <div class="closeM">
-
-                <img src="/static/imagem/icons/192.png" alt="logo redly" title="imagem de redly">
-                <i id="back" class="fa fa-chevron-left" style="font-size:24px" @click="goBack"></i><br><br>
-                <a href="/login">
-                    login
-                </a>
-                <a href="create/">
-                    Sing up
-                </a>
+        <div class="all">
+            <div class="leftDiv l" id="app" ref="left">
+                <div class="closeM">
+                    <a href="#config"><i class="fa fa-cogs" style="font-size:24px"></i></a>
+                    <i id="back" class="fa fa-chevron-left" style="font-size:24px" @click="goBack"></i>
+                    <img src="/static/imagem/icons/192.png" alt="logo redly" title="imagem de redly"><br>
+                    <a href="/login">
+                        login
+                    </a>
+                    <a href="create/">
+                        Sing up
+                    </a>
+                </div>
+                <div class="closeM">
+                    <i id="back" class="fa fa-chevron-right" style="font-size:24px" @click="goBack"></i><br>
+                    <a href="#config"><i class="fa fa-cogs" style="font-size:24px"></i></a>
+                    <a href="/login"><i class="fa fa-sign-in" style="font-size:24px"></i></a>
+                    <a href="/create"><i class="fa fa-plus" style="font-size:24px"></i></a>
+                </div>
             </div>
-            <div class="closeM">
-                <i id="back" class="fa fa-chevron-right" style="font-size:24px" @click="goBack"></i><br><br>
-                <a href="/login"><i class="fa fa-sign-in" style="font-size:24px"></i></a>
-                <a href="/create"><i class="fa fa-plus" style="font-size:24px"></i></a>
+
+            <div class="topDiv l" ref="top">
+                <div class="closeM">
+                    <a href="#config"><i class="fa fa-cogs" style="font-size:24px"></i></a>
+                    <img src="/static/imagem/icons/192.png" alt="logo redly" title="imagem de redly">
+                    <a href="/login">
+                        login
+                    </a>
+                    <a href="create/">
+                        Sing up
+                    </a>
+                </div>
+            </div>
 
 
+            <div class="rigthDiv lm l" ref="right">
+                <div id="config" class="modal">
+                    <div class="modal-dialog">
+                        <div class="mcc">
+                            <header class="xh hh">
+                                <a href="#" class="xbt">×</a>
+                                <h2>Configuração</h2>
+                            </header>
+                            <div class="hh">
+                                <h2>Escolha a opção de menu: </h2>
+                                <select id="menuS" v-model="ssc" @change="chooseM">
+                                    <option>Right</option>
+                                    <option>Left</option>
+                                    <option>Top</option>
+                                </select>
+                            </div>
+                            <hr>
+                            <div class="hh">
+                                <h2>Escolha um tema: </h2>
+                                <select id="theme" v-model="sst" @change="chooseT">
+                                    <option value="MlPl">Menu claro pagina clara</option>
+                                    <option value="MdPl">Menu escuro pagina clara</option>
+                                    <option value="MlPd">Menu claro pagina escura</option>
+                                    <option value="MdPd">Menu escuro pagina escura</option>
 
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <article class="home">
+                    <h1>
+                        <p>
+                            Seja bem-vindo(a) a Redly
+                        </p>
+                    </h1>
+                    <p>
+                        Redly é uma rede social empresarial e acadêmica, que visa a atender maior parte das necessidades social de uma escola ou empresa, disponibilizando um plataforma dinâmica, rápida e fácil.
+                    </p>
+                </article>
             </div>
         </div>
-        <div class="rigthDiv" ref="right">
-            <article class="home">
-                <p>
-                    Seja bem-vindo(a) a Redly
-                </p>
-                <p>
-                    Redly é uma rede social empresarial e acadêmica, que visa a atender maior parte das necessidades social de uma escola ou empresa, disponibilizando um plataforma dinâmica, rápida e fácil.
-                </p>
-            </article>
-        </div>
+        <script type="text/javascript" src="/static/js/node_modules/jquery/dist/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <script type="text/javascript">
-
-        var app = new Vue({
-            el: '#app',
-            methods: {
-                goBack: function () {
-                    var leftDiv=this.$refs.left.style.width;
-                    var cl=document.querySelectorAll(".closeM");
-                    if(leftDiv == "5%"){
-                        document.querySelector(".rigthDiv").style.width="80%";
-                        document.querySelector(".rigthDiv").style.marginLeft="20%";
-
-                        this.$refs.left.style.width="20%";
-
-                        cl[1].style.display="none";
-                        cl[0].style.display="block";
-                    }
-                    else{
-                        this.$refs.left.style.width="5%";
-                        document.querySelector(".rigthDiv").style.width="95%";
-                        document.querySelector(".rigthDiv").style.marginLeft="5%";
-
-                        cl[0].style.display="none";
-                        cl[1].style.display="block";
-
-                    }
-                    console.log(document.getElementById("app").style.width);
-                }
-            }
-        });
-        </script>
+        <script src="/static/js/config.js" charset="utf-8"></script>
     </body>
 </html>
