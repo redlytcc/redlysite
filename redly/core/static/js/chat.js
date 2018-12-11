@@ -34,6 +34,24 @@ function initChat(csrf,us,Lasid) {
     else{
         var theme = "MlPl";
     }
+    if (localStorage.getItem("StymenuL")) {
+        var cl=document.querySelectorAll(".closeM");
+        if (localStorage.getItem("StymenuL") == "5%") {
+            document.querySelector(".rigthDiv").style.width="95%";
+            document.querySelector(".rigthDiv").style.marginLeft="5%";
+            document.querySelector(".leftDiv").style.width="5%";
+            cl[0].style.display="none";
+            cl[1].style.display="block";
+        }
+        else{
+            document.querySelector(".rigthDiv").style.width="85%";
+            document.querySelector(".rigthDiv").style.marginLeft="15%";
+            document.querySelector(".leftDiv").style.width="15%";
+            cl[1].style.display="none";
+            cl[0].style.display="block";
+
+        }
+    }
     var app = new Vue({
         el: '.all',
         data:{
@@ -67,7 +85,7 @@ function initChat(csrf,us,Lasid) {
                         codigo  = '<div class="msm msm-'+this.cr[i][0]+'">';
 
                         if (this.cr[i][1] == us) {
-                            codigo += '<span class="smsm" onclick="contentApp.del('+this.cr[i][0]+')" id="msm-'+this.cr[i][0]+'">>X<</span>';
+                            codigo += '<span class="smsm" onclick="initChat.app.del('+this.cr[i][0]+')" id="msm-'+this.cr[i][0]+'">>X<</span>';
                             codigo+='<div class="mymsm">';
                         }
                         else{
@@ -97,13 +115,14 @@ function initChat(csrf,us,Lasid) {
                 setTimeout(this.hel,1000);
             },
             sendChat:function() {
+                $('#btnSend').attr('readonly', true);
                 this.file.append("nome",this.chatData.nome);
                 this.file.append("text",this.chatData.text);
+                $('#formulario')[0].reset();
 
                 this.$http.post('/apirest/postposts/',this.file)
                     .then((rest)=>{
                         // console.log(rest);
-                        $('#formulario')[0].reset();
                         this.chatData={'nome':us,'text':null};
                         this.file=new FormData();
                         console.log(this.file);
@@ -111,10 +130,13 @@ function initChat(csrf,us,Lasid) {
                     .catch((err)=>{
                         // console.log(err);
                         this.chatData={'nome':us,'text':null};
-
                         this.file=new FormData();
                         console.log(this.file);
                     })
+                    setTimeout(()=>{
+                        $('#btnSend').attr('readonly', false);
+                        console.log('hello');
+                    },600);
             },
             del:function(id) {
 
@@ -135,6 +157,8 @@ function initChat(csrf,us,Lasid) {
                     this.$refs.left.style.width="15%";
                     cl[1].style.display="none";
                     cl[0].style.display="block";
+                    localStorage.setItem("StymenuL","15%");
+
                 }
                 else{
                     this.$refs.left.style.width="5%";
@@ -142,6 +166,8 @@ function initChat(csrf,us,Lasid) {
                     document.querySelector(".rigthDiv").style.marginLeft="5%";
                     cl[0].style.display="none";
                     cl[1].style.display="block";
+                    localStorage.setItem("StymenuL","5%");
+
                 }
                 console.log(document.getElementById("app").style.width);
             },

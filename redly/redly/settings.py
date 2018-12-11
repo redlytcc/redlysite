@@ -45,9 +45,9 @@ INSTALLED_APPS = [
     'djangobower',
     'redweb',
     'compressor',
-    'pwa',
     'webapimd',
-    'livereload',
+    'pwa',
+    # 'livereload',
     # 'rest_auth',
     # 'rest_framework.authtoken',
     # 'channels',
@@ -64,7 +64,6 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'livereload.middleware.LiveReloadScript',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
@@ -193,7 +192,6 @@ PWA_APP_DESCRIPTION = "Redly é uma rede social destinada a todos, tem foco prin
 PWA_APP_THEME_COLOR = '#ad0a18'
 PWA_APP_BACKGROUND_COLOR = '#ffffff'
 PWA_APP_DISPLAY = 'standalone'
-PWA_APP_START_URL = '/redly/'
 PWA_APP_ICONS = [
     {
         'src': '/static/imagem/icons/256.png',
@@ -202,5 +200,10 @@ PWA_APP_ICONS = [
     {
         'src': '/static/imagem/icons/192.png',
         'sizes': '192x192'
+    },
+    {
+        'src': '/static/imagem/icons/512.png',
+        'sizes': '512x512'
     }
 ]
+PWA_APP_START_URL = '/redly/'

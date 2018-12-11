@@ -2,14 +2,14 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    {% load pwa %}
     {% load static %}
+    {% load pwa %}
     <head>
         {% progressive_web_app_meta %}
         <meta charset="utf-8">
         <title>Redly - site</title>
-        <link rel="alternate" type="application/rss+xml" title="Redly - Rede social acadêmica e empresarial" href="https://redly.pythonanywhere.com/sitemap.xml" />
 
+        <link rel="alternate" type="application/rss+xml" title="Redly - Rede social acadêmica e empresarial" href="https://redly.pythonanywhere.com/sitemap.xml" />
         <meta Name="robots" content="follow">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta http-equiv="Content-Language" content="pt-br">
@@ -22,7 +22,7 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="#ffffff">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta property="og:url" content="https://redly.pythonanywhere.com">
-        <link rel="canonical" href="https://redly.pythonanywhere.com/">
+        <link rel="canonical" href="https://redly.pythonanywhere.com">
         <meta name="description" content="Redly é uma rede social destinada a todos, tem foco principal a escolas e empresa" async>
         <meta itemprop="description" content="Redly é uma rede social destinada a todos, tem foco principal a escolas e empresa">
         <meta property="og:description" content="Redly é uma rede social destinada a todos, tem foco principal a escolas e empresa">
@@ -36,18 +36,17 @@
     </head>
     <body>
         <div class="all">
-
             <div class="leftDiv l" id="app" ref="left">
                 <div class="closeM">
                     <a href="#config"><i class="fa fa-cogs" style="font-size:24px"></i></a>
-                    <i id="back" class="fa fa-chevron-left" style="font-size:24px" @click="goBack"></i>
+                    <i class="fa fa-chevron-left" style="font-size:24px" @click="goBack"></i>
                     <img src="/static/imagem/icons/192.png" alt="logo redly" title="imagem de redly"><br>
                     <a href="/final">
                         Sair
                     </a>
                 </div>
                 <div class="closeM">
-                    <i id="back" class="fa fa-chevron-right" style="font-size:24px" @click="goBack"></i><br>
+                    <i class="fa fa-chevron-right" style="font-size:24px" @click="goBack"></i><br>
                     <a href="#config"><i class="fa fa-cogs" style="font-size:24px"></i></a>
                     <a href="/login"><i class="fa fa-sign-in" style="font-size:24px"></i></a>
                     <a href="/create"><i class="fa fa-plus" style="font-size:24px"></i></a>
@@ -94,13 +93,12 @@
                 </div>
                 {% block content %}
                 {% endblock %}
+                <button class="add-button">Add to home screen</button>
             </div>
         </div>
+        <script src="/static/js/install.js"></script>
         <script type="text/javascript" src="/static/js/node_modules/jquery/dist/jquery.min.js"></script>
-
         <script src="/static/js/node_modules/vue/dist/vue.min.js"></script>
-        <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
-        <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script> -->
         <script src="/static/js/node_modules/vue-resource/dist/vue-resource.min.js"></script>
         {% block script %}
         {% endblock %}

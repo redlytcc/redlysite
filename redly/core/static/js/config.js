@@ -32,6 +32,25 @@ if (localStorage.getItem("theme")) {
 else{
     var theme = "MlPl";
 }
+
+if (localStorage.getItem("StymenuL")) {
+    var cl=document.querySelectorAll(".closeM");
+    if (localStorage.getItem("StymenuL") == "5%") {
+        document.querySelector(".rigthDiv").style.width="95%";
+        document.querySelector(".rigthDiv").style.marginLeft="5%";
+        document.querySelector(".leftDiv").style.width="5%";
+        cl[0].style.display="none";
+        cl[1].style.display="block";
+    }
+    else{
+        document.querySelector(".rigthDiv").style.width="85%";
+        document.querySelector(".rigthDiv").style.marginLeft="15%";
+        document.querySelector(".leftDiv").style.width="15%";
+        cl[1].style.display="none";
+        cl[0].style.display="block";
+
+    }
+}
 var app = new Vue({
     el: '.all',
     data:{
@@ -49,6 +68,7 @@ var app = new Vue({
                 this.$refs.left.style.width="15%";
                 cl[1].style.display="none";
                 cl[0].style.display="block";
+                localStorage.setItem("StymenuL","15%");
             }
             else{
                 this.$refs.left.style.width="5%";
@@ -56,6 +76,8 @@ var app = new Vue({
                 document.querySelector(".rigthDiv").style.marginLeft="5%";
                 cl[0].style.display="none";
                 cl[1].style.display="block";
+                localStorage.setItem("StymenuL","5%");
+
             }
             console.log(document.getElementById("app").style.width);
         },

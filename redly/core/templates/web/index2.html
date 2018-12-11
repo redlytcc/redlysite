@@ -3,10 +3,10 @@
 {% block content %}
     <form action="" class="col s12" id="formulario" @submit.prevent="sendChat" enctype="multipart/form-data">
         <div class="rowi">
-            <textarea placeholder="texto" v-model="chatData.text" cols="40" id="id_text" maxlength="6000" name="text" rows="10" style="resize: none;background:white;color:black"></textarea><br>
-            <input type="hidden" id="id_nome" maxlength="40" name="nome" value="{{us}}"><br>
-            <input id="id_img" name="img" type="file" ref="file" accept="image/*" @change="fileon($event)"/><br>
-            <button class="btn waves-effect waves-light" type="submit">
+            <textarea placeholder="texto" v-model="chatData.text" cols="40" id="id_text" maxlength="6000" aria-label="text" name="text" rows="10" style="resize: none;background:white;color:black"></textarea><br>
+            <input type="hidden" id="id_nome" maxlength="40" name="nome" aria-label="nome" value="{{us}}" /><br>
+            <input id="id_img" aria-label="img" name="img" type="file" ref="file" accept="image/*" @change="fileon($event)"/><br>
+            <button id="btnSend" class="btn waves-effect waves-light" type="submit">
                 Enviar
                 <i class="material-icons right">send</i>
             </button>

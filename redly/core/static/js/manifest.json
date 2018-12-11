@@ -1,0 +1,24 @@
+{
+    "name": "Redly",
+    "short_name": "Redly",
+    "description": "Redly \u00e9 uma rede social destinada a todos, tem foco principal a escolas e empresa",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#fff",
+    "theme_color": "#ad0a18",
+    "icons": [
+        {
+            "src": "/static/imagem/icons/256.png",
+            "sizes": "256x256"
+        },
+        {
+            "src": "/static/imagem/icons/192.png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/static/imagem/icons/512.png",
+            "sizes": "512x512"
+        }
+    ]
+
+}

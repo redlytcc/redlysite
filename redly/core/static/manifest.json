@@ -1,9 +1,0 @@
-{
-  "name": "Redly inc",
-  "short_name": "Redly",
-  "start_url": "/",
-  "display": "standalone",
-
-  "background_color": "#b30726",
-  "theme_color": "#b30726"
-}
